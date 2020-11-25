@@ -31,7 +31,7 @@ function App() {
 
       if (isPowerOut) {
         console.log('incrementing power out time');
-        setPowerOutTime(powerOutTime + 20);
+        setPowerOutTime(powerOutTime + 5 * 60);
       }
     }, 5 * 60000); // fetch every 5 minutes
 
