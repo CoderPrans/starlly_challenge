@@ -1,0 +1,22 @@
+.App {
+  text-align: center;
+}
+
+.tray {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.tray p {
+  font-size: 15px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 10px;
+  height: 40px;
+  text-align: right;
+}
+.legend span {
+  margin: 10px;
+}
