@@ -18,11 +18,6 @@ function App() {
   const [lastPowerOutage, setLastPowerOutage] = useState(null);
   const [powerOutTime, setPowerOutTime] = useState(0);
 
-  // power outage in minutes :: DONE
-  // last power outage :: DONE
-  // critical alerts :: DONE
-  // last analyzed time :: DONE
-
   useEffect(() => {
     const fetchDb = setInterval(() => {
       fetch('http://localhost:9000')
@@ -38,16 +33,10 @@ function App() {
         console.log('incrementing power out time');
         setPowerOutTime(powerOutTime + 20);
       }
-    }, 20000);
-
-    // const countPowerOutMins = setInterval(() => {
-    // }, 60000);
+    }, 5 * 60000); // fetch every 5 minutes
 
     return () => clearInterval(fetchDb);
-    // clearInterval(countPowerOutMins);
   });
-
-  // useEffect(() => {});
 
   function getDate(string) {
     // 00:00:00,1995-01-01
@@ -61,7 +50,7 @@ function App() {
   }
 
   function analyze(currDb) {
-    let currTime = /*new Date();*/ `${db[db.length - 1]['TimeSent']},${
+    let currTime = `${db[db.length - 1]['TimeSent']},${
       db[db.length - 1]['DateSent']
     }`;
     setLastAnalyzedTime(currTime);
@@ -74,7 +63,6 @@ function App() {
       db.length &&
       lastFivePar1.length === 5 &&
       lastFivePar1.filter(s => s < 3).length === 0 &&
-      //(!lastAlertTime || Date.now() - lastAlertTime === 12 * 20000); // 12 fetches since last alert.
       (!lastAlertTime ||
         Date.parse(getDate(currTime)) - Date.parse(getDate(lastAlertTime)) >=
           3600000);
@@ -88,7 +76,6 @@ function App() {
     }
 
     // Parameter5 and power outage
-    //    let lastTenSamples = db.slice(-10);
     let lastTenPar5 = db.slice(-10).map(s => s['Parameter5']);
 
     let shouldDeclarePowerOutage =

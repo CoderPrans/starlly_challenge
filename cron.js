@@ -23,7 +23,7 @@ fs.createReadStream('Site_Bittenahalli_raw_data.csv')
 
 // stream data every 2 minutes.
 let count = 1;
-cron.schedule('*/10 * * * * *', function() {
+cron.schedule('*/2 * * * *', function() {
   if (parsed.length && count < parsed.length) count += 1;
   // pick a row and push to db
   console.log(parsed[parsed.length - count]);

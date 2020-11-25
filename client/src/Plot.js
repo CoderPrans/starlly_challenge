@@ -18,7 +18,7 @@ function Plot(props) {
     let timeConv = d3.timeParse('%H:%M:%S,%Y-%m-%d');
     console.log(para123);
     console.log([Math.min.apply(null, para123), Math.max.apply(null, para123)]);
-    console.log([d3.min(para123), d3.max(para123)]);
+    //    console.log([d3.min(para123), d3.max(para123)]);
 
     const xScale = d3
       .scaleTime()
